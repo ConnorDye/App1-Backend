@@ -90,3 +90,13 @@ app.post('/users', (req, res) => {
 function addUser(user){
     users['users_list'].push(user);
 }
+
+app.delete('/users', (req, res) => {
+    const userToDelete = req.body;
+    deleteUser(userToDelete);
+    res.status(200).end();
+});
+
+function deleteUser(user){
+    users['users_list'].pop(user)
+}
