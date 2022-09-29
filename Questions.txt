@@ -1,0 +1,10 @@
+1.) Syntax of 
+
+const findUserByNameJob = (name) => { 
+    return users['users_list'].filter( ((user) => user['name'] === name) && ((user) => user['job'] === job)); 
+}
+
+2.) Searching by Name and Job
+
+3.) Are we using REST API since we're using the GET, PUT, etc
+        *What would it look like if we didn't use REST API?
