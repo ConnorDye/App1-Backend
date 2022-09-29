@@ -1,10 +1,12 @@
-1.) Syntax of 
+1.) In the backend, implement the 201 http code in response to a successful user insertion in the list. We have the logic based on 200 code, but the best practice is to return a 201 (content created). This follows the http specLinks to an external site.. In the frontend, consider the code 201 rather than 200 as a successful insertion If the response doesn't come with a 201 status code, do not update the state on the frontend which means no changes to the table. (1 point)
 
-const findUserByNameJob = (name) => { 
-    return users['users_list'].filter( ((user) => user['name'] === name) && ((user) => user['job'] === job)); 
-}
+    a.) I tried adding 201 to res.status(200).send(userToAdd); in app.post() but I have to refresh the page for it to add.
 
-2.) Searching by Name and Job
+2.) For 2.) I used req.body['id'] = Date.now() for a unique ID is that okay?
 
-3.) Are we using REST API since we're using the GET, PUT, etc
-        *What would it look like if we didn't use REST API?
+3.) For 3.) I did res.status(200).send(userToAdd) in the POST method to send the userToAdd JSON object and then in the front end I did 
+     person["name"]= response.data["name"]
+     person["job"] = response.data["job"]
+     person["id"] = respone.data["id"] in the axios post call.
+
+4.) 

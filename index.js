@@ -113,9 +113,17 @@ const findUserByNameJob = (name, job) => {
 }
 
 app.post('/users', (req, res) => {
+    // //ADDED THIS
+    // const { v4: uuidV4 } = require('uuid');
+    // console.log(uuidv4())
+    req.body['id'] = Date.now()
+    // console.log(req.body['id'])
+    // console.log(req.body)
+    // //END OF ADD
     const userToAdd = req.body;
     addUser(userToAdd);
-    res.status(200).end();
+    // res.status(200).end();
+    res.status(200).send(userToAdd);
 });
 
 function addUser(user){
