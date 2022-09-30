@@ -123,19 +123,56 @@ app.post('/users', (req, res) => {
     const userToAdd = req.body;
     addUser(userToAdd);
     // res.status(200).end();
-    res.status(200).send(userToAdd);
+    res.status(201).send(userToAdd);
 });
 
 function addUser(user){
     users['users_list'].push(user);
 }
 
-app.delete('/users', (req, res) => {
-    const userToDelete = req.body;
-    deleteUser(userToDelete);
-    res.status(200).end();
+
+// app.get('/users/:id', (req, res) => {
+//     const id = req.params['id']; //or req.params.id
+//     let result = findUserById(id);
+//     if (result === undefined || result.length == 0)
+//         res.status(404).send('Resource not found.');
+//     else {
+//         result = {users_list: result};
+//         res.send(result);
+//     }
+// });
+
+// app.delete('/users', (req, res) => {
+//     const userToDelete = req.body;
+//     console.log(userToDelete)
+//     deleteUser(userToDelete);
+//     res.status(200).end();
+// });
+
+app.delete('/users/:id', (req, res) => {
+    // const id = req.body['id']; //or req.params.id
+    const id = req.params.id
+    // console.log(id)
+    let result = findUserById(id);
+    console.log(result);
+    if (result === undefined || result.length == 0)
+        res.status(404).send('Resource not found.');
+    else {
+        // result = {users_list: result};
+        console.log(result);
+        // console.log(result)
+        // res.send(result);
+        deleteUser(result);
+        res.status(204).end();
+    }
 });
 
 function deleteUser(user){
-    users['users_list'].pop(user)
+    console.log("Popping user", user)
+    const index = users['users_list'].indexOf(user);
+    users['users_list'].splice(index, 1)
+    
+    // users['users_list'].pop(user)
+    // delete users['users_list'].user
+    // users['users_list'].remove(user)
 }

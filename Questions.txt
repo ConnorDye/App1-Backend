@@ -9,4 +9,4 @@
      person["job"] = response.data["job"]
      person["id"] = respone.data["id"] in the axios post call.
 
-4.) 
+4.) Backend delete working. Front end I make a axios delete and then I handle the backend?
