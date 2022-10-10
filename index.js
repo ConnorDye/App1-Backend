@@ -116,7 +116,7 @@ app.post('/users', (req, res) => {
     // //ADDED THIS
     // const { v4: uuidV4 } = require('uuid');
     // console.log(uuidv4())
-    req.body['id'] = Date.now()
+    req.body['id'] = Date.now().toString();
     // console.log(req.body['id'])
     // console.log(req.body)
     // //END OF ADD
